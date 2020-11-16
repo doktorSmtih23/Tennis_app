@@ -1,4 +1,4 @@
-package com.example.chat_app; 
+package com.doktor_23.Tennis_chat_app; 
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;

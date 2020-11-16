@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:389259681753:android:7510f2275d25ae712503c8",
+        "mobilesdk_app_id": "1:389259681753:android:f28896ffbe08a6302503c8",
         "android_client_info": {
-          "package_name": "com.example.chat_app"
+          "package_name": "com.doktor_23.Tennis_chat_app"
         }
       },
       "oauth_client": [
