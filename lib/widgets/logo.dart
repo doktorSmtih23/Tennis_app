@@ -16,7 +16,7 @@ class Logo extends StatelessWidget {
         children: <Widget>[
           Image(image: AssetImage('assets/tennis_ball.png')),
           SizedBox(height: 20),
-          Text(this.text, style: TextStyle(fontSize: 30,fontWeight: FontWeight.w300)),
+          Text(this.text, style: TextStyle(fontSize: 30,fontWeight: FontWeight.w300),textAlign: TextAlign.center,),
         ],
       ),
     );

@@ -88,9 +88,6 @@ class __FormState extends State<_Form> {
           presionar: authService.autenticando
               ? null
               : () async {
-                  print(nameCtrl.text);
-                  print(emailCtrl.text);
-                  print(passCtrl.text);
                   final registroOk = await authService.register(
                       nameCtrl.text.trim(),
                       emailCtrl.text.trim(),

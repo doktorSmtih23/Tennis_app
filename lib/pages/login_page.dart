@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Logo(text: 'Messenger'),
+                  Logo(text: 'Tennis Messenger'),
                   _Form(),
                   Labels(
                     ruta: 'registro',
@@ -82,9 +82,9 @@ class __FormState extends State<_Form> {
                         emailCtrl.text.trim(), passCtrl.text.trim());
 
                     if (loginOk) {
-                      
+
                       socketService.connect();
-                      Navigator.pushReplacementNamed(context, 'usuarios');
+                      Navigator.pushReplacementNamed(context, 'home');
                     } else {
                       // Mostara alerta
                       mostrarAlerta(context, 'Login incorrecto',

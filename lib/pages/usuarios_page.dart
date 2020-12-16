@@ -40,6 +40,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
 
     return Scaffold(
         appBar: AppBar(
+
           title: Align(
               child: Text(
               usuario.nombre,
@@ -48,7 +49,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
             ),
           ),
           elevation: 1,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.orange[600],
           leading: IconButton(
             icon: Icon(
               Icons.exit_to_app,
@@ -94,26 +95,84 @@ class _UsuariosPageState extends State<UsuariosPage> {
     );
   }
 
-  ListTile _usuarioListTile(Usuario usuario) {
-    return ListTile(
-      title: Text(usuario.nombre),
-      subtitle: Text(usuario.email),
-      leading: CircleAvatar(
-        backgroundImage: AssetImage('assets/tennis_ball.png'),
-        child: Text(usuario.nombre.substring(0, 2),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.orange[100],
+    Widget _usuarioListTile(Usuario usuario) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
+    return Row(
+      children: [
+        GestureDetector(
+          child: CircleAvatar(
+            backgroundImage: AssetImage('assets/tenista.gif'),
+            radius:30
+          ),
+          onTap: () {
+            mostrarCuadro(context, usuario);
+          },
+        ),
+        Flexible(
+          child: ListTile(
+            title: Text(usuario.nombre),
+            subtitle: Text(usuario.email),
+            trailing: Container(
+              width: 20,
+              height: 20,
+              child: usuario.online
+                  ? Image.asset('assets/tennis_ball.png')
+                  : Image.asset('assets/greyball.png'),
+            ),
+            onTap: () {
+              final chatService =
+                  Provider.of<ChatService>(context, listen: false);
+              chatService.usuarioPara = usuario;
+              Navigator.pushNamed(context, 'chat');
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  mostrarCuadro(BuildContext context, Usuario usuario) {
+    return showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        //title: Text('hola'),
+        content: Image(
+          image: AssetImage('assets/tenista.gif'),
+          //fit: BoxFit.fill
+        ),
+        
+        actions: <Widget>[
+          
+          Container(
+            width:295,
+            //color: Colors.amber,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.chat),
+                    iconSize: 32,
+                    onPressed: () {
+                      final chatService =
+                          Provider.of<ChatService>(context, listen: false);
+                      chatService.usuarioPara = usuario;
+                      Navigator.popAndPushNamed(context, 'chat');
+                    }),
+                IconButton(
+                    icon: Icon(Icons.info),
+                    iconSize: 28,
+                    onPressed: () {
+                      final chatService =
+                          Provider.of<ChatService>(context, listen: false);
+                      chatService.usuarioPara = usuario;
+                      Navigator.popAndPushNamed(context, 'chat');
+                    }),
+              ],
+            ),
+          )
+        ],
       ),
-      trailing: Container(
-        width: 20,
-        height: 20,
-        child: usuario.online ? Image.asset('assets/tennis_ball.png') :Image.asset('assets/greyball.png'),
-            
-      ),
-      onTap: () {
-        final chatService = Provider.of<ChatService>(context,listen:false);
-        chatService.usuarioPara = usuario;
-        Navigator.pushNamed(context, 'chat');
-      },
     );
   }
 

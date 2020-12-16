@@ -43,7 +43,8 @@ class PushNotificationsProvider {
   }
 
   Future<dynamic> onResume(Map<String, dynamic> message) async {
-    print('=====onResuem=====');
+    print('=====onResume=====');
     print('message:$message');
   }
+
 }
