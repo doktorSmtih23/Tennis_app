@@ -2,8 +2,8 @@ import 'dart:io';
 
 class Environment {
   static String apiUrl = Platform.isAndroid
-      ? 'https://tennis-chat-app.herokuapp.com/api'
-      : 'https://tennis-chat-app.herokuapp.com/api';
+      ? 'https://pure-brushlands-64301.herokuapp.com/api'
+      : 'https://pure-brushlands-64301.herokuapp.com/api';
   static String socketUrl =
-      Platform.isAndroid ? 'https://tennis-chat-app.herokuapp.com' : 'https://tennis-chat-app.herokuapp.com';
+      Platform.isAndroid ? 'https://pure-brushlands-64301.herokuapp.com' : 'https://pure-brushlands-64301.herokuapp.com';
 }

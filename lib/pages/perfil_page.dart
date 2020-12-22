@@ -20,25 +20,43 @@ class _PerfilPageState extends State<PerfilPage> {
     return SafeArea(
       child: Scaffold(
         body: Column(children: <Widget>[
-          Text('Perfil'),
+          Padding(
+            padding: EdgeInsets.only(top: 30),
+          ),
+          Text('Perfil',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              )),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ProfileImage(),
+                    child: Card(
+                        margin: EdgeInsets.all(20),
+                        elevation: 9,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        child: ProfileImage()),
                   ),
-                  Text(usuario.nombre),
+                  Text(usuario.nombre, style: TextStyle(fontSize: 24)),
                 ],
               ),
               Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RacketImage(),
+                    child: Card(
+                        elevation: 9,
+                        margin: EdgeInsets.all(20),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        child: RacketImage()),
                   ),
-                  Text('Mi raqueta')
+                  Text('Mi raqueta', style: TextStyle(fontSize: 24)),
                 ],
               ),
             ],
@@ -91,14 +109,14 @@ class _ProfileImageState extends State<ProfileImage> {
           ? GestureDetector(
               child: Image(
                 image: AssetImage('assets/tenista.gif'),
-                fit: BoxFit.fill,
-                height: 280,
-                width: 180,
+                fit: BoxFit.contain,
+                height: 200,
+                width: 150,
               ),
               onTap: () {
-                getImage();
+               getImage();
               })
-          : Container(height: 250, child: Image.file(_image)),
+          : Container(height: 200, width: 150, child: Image.file(_image)),
     );
   }
 }
@@ -112,9 +130,9 @@ class _RacketImageState extends State<RacketImage> {
   final picker = ImagePicker();
   File _image;
 
-  Future getImage() async {
+  Future getImage(ImageSource source) async {
     final pickedFile = await picker.getImage(
-      source: ImageSource.gallery,
+      source: source,
     );
 
     setState(() {
@@ -135,12 +153,12 @@ class _RacketImageState extends State<RacketImage> {
                 image: AssetImage('assets/raqueta.jpg'),
                 fit: BoxFit.contain,
                 height: 200,
-                width: 180,
+                width: 120,
               ),
               onTap: () {
-                getImage();
+                getImage(ImageSource.gallery);
               })
-          : Container(height: 250, child: Image.file(_image)),
+          : Container(height: 200, width: 120, child: Image.file(_image)),
     );
   }
 }

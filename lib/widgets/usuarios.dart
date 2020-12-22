@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Usuarios_Wigdet extends StatelessWidget {
+class UsuariosWigdet extends StatelessWidget {
   
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:chat_app/widgets/perfil.dart';
 import 'package:chat_app/widgets/tienda.dart';
 import 'package:chat_app/widgets/usuarios.dart';
@@ -8,13 +10,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(children: <Widget>[
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Perfil_Wigdet(),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Usuarios_Wigdet(),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Tienda_Wigdet(),
+        backgroundColor: Color(0xffF2F2F2),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+          //Padding(padding: EdgeInsets.only(top: 30)),
+          PerfilWigdet(),
+          //Padding(padding: EdgeInsets.only(top: 10)),
+          UsuariosWigdet(),
+          //Padding(padding: EdgeInsets.only(top: 10)),
+          TiendaWigdet(),
         ]),
       ),
     );

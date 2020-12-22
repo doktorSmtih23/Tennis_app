@@ -8,27 +8,35 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:389259681753:android:f28896ffbe08a6302503c8",
+        "mobilesdk_app_id": "1:389259681753:android:83158025530e5d252503c8",
         "android_client_info": {
           "package_name": "com.doktor_23.Tennis_chat_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "389259681753-l6a4jv3ql0vdt8arrgl479t382q00qbq.apps.googleusercontent.com",
+          "client_id": "389259681753-407v4qmrnsin3grqo0377jkmmi9a9m7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doktor_23.Tennis_chat_app",
+            "certificate_hash": "9e2f345e0652485ae16729f27b85be8b1335a9a4"
+          }
+        },
+        {
+          "client_id": "389259681753-ndkgak1mb4tbpnduv2vhn42at8bvr4bh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDfQCa0BQZ2PBDslad1TjOPkmqOpbHbMps"
+          "current_key": "AIzaSyClRx-UI7spbH0Ir87VcoC65gTAzD8ljMA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "389259681753-l6a4jv3ql0vdt8arrgl479t382q00qbq.apps.googleusercontent.com",
+              "client_id": "389259681753-ndkgak1mb4tbpnduv2vhn42at8bvr4bh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

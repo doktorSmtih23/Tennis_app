@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class Perfil_Wigdet extends StatelessWidget {
+class PerfilWigdet extends StatelessWidget {
   
     @override
   Widget build(BuildContext context) {

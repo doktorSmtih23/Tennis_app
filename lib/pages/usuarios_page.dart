@@ -44,11 +44,13 @@ class _UsuariosPageState extends State<UsuariosPage> {
           title: Align(
               child: Text(
               usuario.nombre,
-              style: TextStyle(color: Colors.black87,fontSize: 24,),
-              
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 24
+                )
             ),
           ),
-          elevation: 1,
+          elevation: 9,
           backgroundColor: Colors.orange[600],
           leading: IconButton(
             icon: Icon(
@@ -84,8 +86,6 @@ class _UsuariosPageState extends State<UsuariosPage> {
         ));
   }
 
-  
-
   ListView _listViewUsuarios() {
     return ListView.separated(
       physics: BouncingScrollPhysics(),
@@ -95,11 +95,12 @@ class _UsuariosPageState extends State<UsuariosPage> {
     );
   }
 
-    Widget _usuarioListTile(Usuario usuario) {
+   Widget _usuarioListTile(Usuario usuario) {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Row(
       children: [
+        Padding(padding: EdgeInsets.only(left: 8)),
         GestureDetector(
           child: CircleAvatar(
             backgroundImage: AssetImage('assets/tenista.gif'),
