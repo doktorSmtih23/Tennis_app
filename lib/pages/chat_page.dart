@@ -77,7 +77,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
     final usuarioPara = chatService.usuarioPara;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green[100],
+          backgroundColor: Colors.green,
           title: Column(
             children: <Widget>[
               Text(usuarioPara.nombre,
@@ -100,7 +100,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
               ),
               Divider(height: 1),
               Container(
-                color: Colors.white,
+                color: Colors.green,
                 height: 50,
                 child: _inputchat(),
               )

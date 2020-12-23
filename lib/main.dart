@@ -32,6 +32,11 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => ChatService()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.green,
+          accentColor: Colors.orange
+        ),
         debugShowCheckedModeBanner: false,
         title: 'Chat App',
         initialRoute: 'loading',
