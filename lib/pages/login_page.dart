@@ -82,7 +82,6 @@ class __FormState extends State<_Form> {
                         emailCtrl.text.trim(), passCtrl.text.trim());
 
                     if (loginOk) {
-
                       socketService.connect();
                       Navigator.pushReplacementNamed(context, 'home');
                     } else {
