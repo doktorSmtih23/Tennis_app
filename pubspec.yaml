@@ -31,7 +31,7 @@ dependencies:
   pull_to_refresh: ^1.6.1
   provider: ^4.3.2+2
   http: ^0.12.2
-  flutter_secure_storage: 
+  flutter_secure_storage:
   socket_io_client: ^0.9.11
   flutter_chat_bubble: ^1.0.2
   firebase_messaging: ^7.0.3

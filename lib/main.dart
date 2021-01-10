@@ -33,9 +33,11 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         theme: ThemeData(
-          brightness: Brightness.dark,
-          primaryColor: Colors.green,
-          accentColor: Colors.orange
+          primaryColorDark: Colors.amber,
+          //brightness: Brightness.dark,
+          primaryColor: Colors.orange,
+          accentColor: Colors.orange,
+          hintColor: Colors.black,
         ),
         debugShowCheckedModeBanner: false,
         title: 'Chat App',

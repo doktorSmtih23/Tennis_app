@@ -1,7 +1,10 @@
+import 'package:chat_app/services/usuario_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class PushNotificationsProvider {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  UsuariosService usuario = UsuariosService();
 
   static Future<dynamic> onBackgroundMessage(
       Map<String, dynamic> message) async {
@@ -22,6 +25,7 @@ class PushNotificationsProvider {
     await _firebaseMessaging.requestNotificationPermissions();
 
     final token = await _firebaseMessaging.getToken();
+
     print('======FCM Token=====');
     print('$token');
 
@@ -30,6 +34,11 @@ class PushNotificationsProvider {
         onBackgroundMessage: onBackgroundMessage,
         onLaunch: onLaunch,
         onResume: onResume);
+    _firebaseMessaging.getToken().then((token) {
+      if (token != null) {
+       usuario.saveUserFcmToken(token);
+      }
+    });
   }
 
   Future<dynamic> onMessage(Map<String, dynamic> message) async {
@@ -46,5 +55,4 @@ class PushNotificationsProvider {
     print('=====onResume=====');
     print('message:$message');
   }
-
 }
