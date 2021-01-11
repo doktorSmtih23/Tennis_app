@@ -30,7 +30,7 @@ class LoginResponse {
     Map<String, dynamic> toJson() => {
         "ok": ok,
         "usuario": usuario.toJson(),
-        "token": token,
+        "token": token
     };
 }
 

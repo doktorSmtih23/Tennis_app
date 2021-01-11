@@ -1,7 +1,8 @@
 import 'package:chat_app/services/usuario_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 
-class PushNotificationsProvider {
+class PushNotificationsProvider with ChangeNotifier{
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   UsuariosService usuario = UsuariosService();
@@ -34,9 +35,9 @@ class PushNotificationsProvider {
         onBackgroundMessage: onBackgroundMessage,
         onLaunch: onLaunch,
         onResume: onResume);
-    _firebaseMessaging.getToken().then((token) {
+        _firebaseMessaging.getToken().then((token) {
       if (token != null) {
-       usuario.saveUserFcmToken(token);
+        usuario.saveUserFcmToken(token);
       }
     });
   }
@@ -55,4 +56,6 @@ class PushNotificationsProvider {
     print('=====onResume=====');
     print('message:$message');
   }
+
+  notifyListeners();
 }

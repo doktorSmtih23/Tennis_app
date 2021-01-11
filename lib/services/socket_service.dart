@@ -18,7 +18,7 @@ class SocketService with ChangeNotifier {
   IO.Socket _socket;
 
   ServerStatus get serverStatus => this._serverStatus;
-  
+
   IO.Socket get socket => this._socket;
   Function get emit => this._socket.emit;
 
@@ -31,9 +31,7 @@ class SocketService with ChangeNotifier {
       'transports': ['websocket'],
       'autoConnect': true,
       'forceNew': true,
-      'extraHeaders': {
-        'x-token': token
-      }
+      'extraHeaders': { 'x-token': token }
     });
 
     this._socket.on('connect', (_) {

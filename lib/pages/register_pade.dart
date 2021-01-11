@@ -89,9 +89,10 @@ class __FormState extends State<_Form> {
               ? null
               : () async {
                   final registroOk = await authService.register(
-                      nameCtrl.text.trim(),
-                      emailCtrl.text.trim(),
-                      passCtrl.text.trim());
+                    nameCtrl.text.trim(),
+                    emailCtrl.text.trim(),
+                    passCtrl.text.trim(),
+                  );
                   if (registroOk == true) {
                     socketService.connect();
                     Navigator.pushReplacementNamed(context, 'usuarios');
