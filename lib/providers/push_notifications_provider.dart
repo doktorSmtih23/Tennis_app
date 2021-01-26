@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class PushNotificationsProvider with ChangeNotifier{
+  
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   UsuariosService usuario = UsuariosService();
@@ -26,9 +27,6 @@ class PushNotificationsProvider with ChangeNotifier{
     await _firebaseMessaging.requestNotificationPermissions();
 
     final token = await _firebaseMessaging.getToken();
-
-    print('======FCM Token=====');
-    print('$token');
 
     _firebaseMessaging.configure(
         onMessage: onMessage,

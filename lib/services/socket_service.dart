@@ -5,15 +5,9 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import 'auth_service.dart';
 
-enum ServerStatus {
-  Online,
-  Offline,
-  Connecting
-}
-
+enum ServerStatus { Online, Offline, Connecting }
 
 class SocketService with ChangeNotifier {
-
   ServerStatus _serverStatus = ServerStatus.Connecting;
   IO.Socket _socket;
 
@@ -23,15 +17,14 @@ class SocketService with ChangeNotifier {
   Function get emit => this._socket.emit;
 
   void connect() async {
-
     final token = await AuthService.getToken();
-    
+
     // Dart client
-    this._socket = IO.io( Environment.socketUrl , {
+    this._socket = IO.io(Environment.socketUrl, {
       'transports': ['websocket'],
       'autoConnect': true,
       'forceNew': true,
-      'extraHeaders': { 'x-token': token }
+      'extraHeaders': {'x-token': token}
     });
 
     this._socket.on('connect', (_) {
@@ -43,12 +36,9 @@ class SocketService with ChangeNotifier {
       this._serverStatus = ServerStatus.Offline;
       notifyListeners();
     });
-
   }
-
 
   void disconnect() {
     this._socket.disconnect();
   }
-
 }

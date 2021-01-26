@@ -74,8 +74,7 @@ class AuthService with ChangeNotifier {
     } catch (err) {
       print("error $err");
     }
-    print('===================fcmToken=========================');
-    print(fcmtoken);
+    
     return fcmtoken;
   }
 
@@ -128,7 +127,7 @@ class AuthService with ChangeNotifier {
       try {
       var body = jsonEncode({'fcmToken': fcmToken});
       await http.post('${Environment.apiUrl}/fcm-token', body: body);
-      print(resp.body);
+
 
     } catch (err) {
       print("error $err");
