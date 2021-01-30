@@ -4,6 +4,7 @@ import 'package:chat_app/models/mensajes_response.dart';
 import 'package:chat_app/services/auth_service.dart';
 import 'package:chat_app/services/chat_service.dart';
 import 'package:chat_app/services/socket_service.dart';
+import 'package:chat_app/shared_preferences/shared_preferences.dart';
 import 'package:chat_app/widgets/chat_message.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,16 +12,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ChatPage extends StatefulWidget {
+  static final String routeName = 'chat';
+
   @override
   _ChatPageState createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
-  
   final _textController = new TextEditingController();
   final _focusNode = new FocusNode();
 
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
+
+  final prefs = new PreferenciasUsuario();
 
   ChatService chatService;
   SocketService socketService;
@@ -49,8 +53,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
           texto: m.mensaje,
           uid: m.de,
           animationController: AnimationController(
-            vsync:this,
-            duration: Duration(milliseconds: 0))
+              vsync: this, duration: Duration(milliseconds: 0))
             ..forward(),
         ));
 
@@ -74,6 +77,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    prefs.ultimaPagina = ChatPage.routeName;
     final usuarioPara = chatService.usuarioPara;
     return Scaffold(
         appBar: AppBar(
@@ -187,7 +191,6 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-
     for (ChatMessage message in _messages) {
       message.animationController.dispose();
     }

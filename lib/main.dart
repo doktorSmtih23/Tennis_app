@@ -7,8 +7,13 @@ import 'package:provider/provider.dart';
 
 import 'services/chat_service.dart';
 import 'services/socket_service.dart';
+import 'shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = new PreferenciasUsuario();
+  await prefs.initPrefs();
+  runApp(MyApp());} 
 
 class MyApp extends StatefulWidget {
   @override

@@ -1,6 +1,8 @@
+import 'package:chat_app/shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class CustomInput extends StatelessWidget {
+  
   final IconData icon;
   final String placeholder;
   final TextEditingController textController;
@@ -19,6 +21,7 @@ class CustomInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prefs= new PreferenciasUsuario();
     return Container(
         padding: EdgeInsets.only(top: 5, left: 5, bottom: 5, right: 20),
         margin: EdgeInsets.only(bottom: 20),
@@ -34,6 +37,9 @@ class CustomInput extends StatelessWidget {
             ]),
         child: TextField(
           controller: this.textController,
+          onChanged: (value) {
+          prefs.emailUsuario = value;
+        },
           autocorrect: false,
           keyboardType: this.keyboardType,
           obscureText: this.isPassword,

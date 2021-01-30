@@ -1,19 +1,27 @@
 import 'dart:io';
 
 import 'package:chat_app/services/auth_service.dart';
+import 'package:chat_app/shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class PerfilPage extends StatefulWidget {
+  
+static final String routeName = 'perfil';
+
   @override
   _PerfilPageState createState() => _PerfilPageState();
 }
 
 class _PerfilPageState extends State<PerfilPage> {
+
+final prefs = new PreferenciasUsuario();
+  
   @override
   Widget build(BuildContext context) {
+    prefs.ultimaPagina = PerfilPage.routeName;
     final authService = Provider.of<AuthService>(context);
     final usuario = authService.usuario;
 

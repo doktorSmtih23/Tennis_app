@@ -2,6 +2,7 @@ import 'package:chat_app/services/auth_service.dart';
 import 'package:chat_app/services/chat_service.dart';
 import 'package:chat_app/services/socket_service.dart';
 import 'package:chat_app/services/usuario_service.dart';
+import 'package:chat_app/shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:chat_app/models/usuario.dart';
 
 class UsuariosPage extends StatefulWidget {
+  static final String routeName = 'usuarios';
   @override
   _UsuariosPageState createState() => _UsuariosPageState();
 }
@@ -19,6 +21,8 @@ class _UsuariosPageState extends State<UsuariosPage> {
       RefreshController(initialRefresh: false);
   final usuarioService = new UsuariosService();
 
+  final prefs = new PreferenciasUsuario();
+
   List<Usuario> usuarios = [];
 
   @override
@@ -27,28 +31,19 @@ class _UsuariosPageState extends State<UsuariosPage> {
     super.initState();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
     final socketService = Provider.of<SocketService>(context);
     final usuario = authService.usuario;
-   
-
-
+    
+    prefs.ultimaPagina = UsuariosPage.routeName;
 
     return Scaffold(
         appBar: AppBar(
-
           title: Align(
-              child: Text(
-              usuario.nombre,
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24
-                )
-            ),
+            child: Text(usuario.nombre,
+                style: TextStyle(color: Colors.black87, fontSize: 24)),
           ),
           elevation: 9,
           backgroundColor: Colors.orange[600],
@@ -95,7 +90,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
     );
   }
 
-   Widget _usuarioListTile(Usuario usuario) {
+  Widget _usuarioListTile(Usuario usuario) {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Row(
@@ -103,9 +98,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
         Padding(padding: EdgeInsets.only(left: 8)),
         GestureDetector(
           child: CircleAvatar(
-            backgroundImage: AssetImage('assets/tenista.gif'),
-            radius:30
-          ),
+              backgroundImage: AssetImage('assets/tenista.gif'), radius: 30),
           onTap: () {
             mostrarCuadro(context, usuario);
           },
@@ -142,11 +135,10 @@ class _UsuariosPageState extends State<UsuariosPage> {
           image: AssetImage('assets/tenista.gif'),
           //fit: BoxFit.fill
         ),
-        
+
         actions: <Widget>[
-          
           Container(
-            width:295,
+            width: 295,
             //color: Colors.amber,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
