@@ -13,21 +13,28 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQueryData();
+    queryData = MediaQuery.of(context);
     prefs.ultimaPagina = HomePage.routeName;
-    
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xffF2F2F2),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-          //Padding(padding: EdgeInsets.only(top: 30)),
-          PerfilWigdet(),
-          //Padding(padding: EdgeInsets.only(top: 10)),
-          UsuariosWigdet(),
-          //Padding(padding: EdgeInsets.only(top: 10)),
-          TiendaWigdet(),
+        body: Stack(
+          children:<Widget>[ 
+            Image(image: AssetImage('assets/screen_1.jpg'),
+            height: queryData.size.height*0.9,
+            fit: BoxFit.cover),
+            Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+            //Padding(padding: EdgeInsets.only(top: 30)),
+            PerfilWigdet(),
+            //Padding(padding: EdgeInsets.only(top: 10)),
+            UsuariosWigdet(),
+            //Padding(padding: EdgeInsets.only(top: 10)),
+            TiendaWigdet(),
+          ]),
         ]),
       ),
     );

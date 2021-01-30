@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
 class UsuariosWigdet extends StatelessWidget {
-  
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQueryData();
+    queryData = MediaQuery.of(context);
     return GestureDetector(
         child: Stack(alignment: Alignment.bottomLeft, children: <Widget>[
-          Image(
-            image: AssetImage('assets/usuarios_img.jpg'),
-            height: 150,
-            width: double.infinity,
-            fit: BoxFit.cover,
+          Center(
+            child: Container(
+              height: queryData.size.height*.28,
+              width: queryData.size.width*.95,
+              child: Image(
+                image: AssetImage('assets/usuarios_img.jpg'),
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Align(
               child: Text(

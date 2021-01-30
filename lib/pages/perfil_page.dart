@@ -25,51 +25,63 @@ final prefs = new PreferenciasUsuario();
     final authService = Provider.of<AuthService>(context);
     final usuario = authService.usuario;
 
+    MediaQueryData queryData = new MediaQueryData();
+    queryData = MediaQuery.of(context);
+
+
     return SafeArea(
       child: Scaffold(
-        body: Column(children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 30),
-          ),
-          Text('Perfil',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                        margin: EdgeInsets.all(20),
-                        elevation: 9,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        child: ProfileImage()),
-                  ),
-                  Text(usuario.nombre, style: TextStyle(fontSize: 24)),
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                        elevation: 9,
-                        margin: EdgeInsets.all(20),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        child: RacketImage()),
-                  ),
-                  Text('Mi raqueta', style: TextStyle(fontSize: 24)),
-                ],
-              ),
-            ],
-          ),
-        ]),
+        body: Stack(
+          children:<Widget>[ 
+           Image(image:AssetImage('assets/screen_1.jpg'),
+           fit: BoxFit.cover,
+           height:queryData.size.height*1.0),
+           Column(
+           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 8),
+            ),
+            Text('Perfil',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Card(
+                          margin: EdgeInsets.all(20),
+                          elevation: 9,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                          child: ProfileImage()),
+                    ),
+                    Text(usuario.nombre, style: TextStyle(fontSize: 24,color: Colors.white)),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                          elevation: 9,
+                          margin: EdgeInsets.all(20),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                          child: RacketImage()),
+                    ),
+                    Text('Mi raqueta', style: TextStyle(fontSize: 24,color:Colors.white)),
+                  ],
+                ),
+              ],
+            ),
+          ]),
+                  ]),
       ),
     );
   }
@@ -112,14 +124,21 @@ class _ProfileImageState extends State<ProfileImage> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQueryData();
+    queryData = MediaQuery.of(context);
     return Center(
       child: _image == null
           ? GestureDetector(
-              child: Image(
-                image: AssetImage('assets/tenista.gif'),
-                fit: BoxFit.contain,
-                height: 200,
-                width: 150,
+              child: Container(
+                height: queryData.size.height*.26,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30)),
+                child: Image(
+                  image: AssetImage('assets/tenista.gif'),
+                  fit: BoxFit.contain,
+                  height: queryData.size.height*.39,
+                  width: queryData.size.width*.45,
+                ),
               ),
               onTap: () {
                getImage();
